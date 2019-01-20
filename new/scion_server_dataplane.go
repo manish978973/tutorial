@@ -27,7 +27,7 @@ func printUsage() {
 }
 
 
-func main{
+func main(){
 
 var (
 saddr string                                //Intialising local variables
