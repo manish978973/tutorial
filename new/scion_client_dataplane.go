@@ -43,7 +43,7 @@ func main() {
 
   var (
 	clientAddress string
-    serverAddress String
+    serverAddress string
      ef error
     client_local *snet.Addr
    server_destination *snet.Addr
