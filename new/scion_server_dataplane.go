@@ -4,7 +4,8 @@
 package  main
 
 import (
- "fmt"                                                                      //import fmt for printing
+ "fmt"
+ "flag"         //import fmt for printing
  "log"                                                                      //importing log for logging out errors
  "github.com/scionproto/scion/go/lib/snet"                                  //importing snet packages
  "github.com/scionproto/scion/go/lib/sciond"                                //importing packages
