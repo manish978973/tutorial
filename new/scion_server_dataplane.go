@@ -62,12 +62,12 @@ scionconnection *snet.Conn
 receivePacketBuffer := make([]byte, 2500)  //Intiating a dynamic array of respective size
 
   for {
-  		n, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)
+  		n, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer) //decoding value from buffer
   	 logerror(ef)
 
   		// Packet received, send back response to same client
 
-  		_, ef = scionconnection.WriteTo(receivePacketBuffer[:n], clientAddr) //Hint given in tutorial
+  		_, ef = scionconnection.WriteTo(receivePacketBuffer[:n], clientAddr) //Hint given in tutorial (sending back the response to client)
   		 logerror(ef)
   		fmt.Println("Scion connection from", clientAddr)
   	}
