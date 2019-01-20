@@ -14,11 +14,11 @@ import (
 
 
 
-func logerror(ef error)                                                //func which will be caused frequently to log out errors
-{
-if err!=nil
-{
-log.Println(err);
+func logerror(ef error) {                                              //func which will be caused frequently to log out errors
+
+	if ef!=nil {
+
+log.Println(ef)
 }
 }
 
@@ -29,16 +29,18 @@ func printUsage() {
 
 func main{
 
-var saddr string                                //Intialising local variables
-var ef error
-var ser *snet.Addr
-var scionconnection *snet.Conn
+var (
+saddr string                                //Intialising local variables
+ef error
+ser *snet.Addr
+scionconnection *snet.Conn
+)
 
 
 
 
  flag.StringVar(&saddr, "saddr", "", "server addr")  // flag used to fetch value from command line
- flag.parse()
+ flag.Parse()
 
 
 
