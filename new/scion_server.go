@@ -63,7 +63,7 @@ var (
 receivePacketBuffer := make([]byte, 2500)  //Intiating a dynamic array of respective size
 
   for {
-  		n, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)
+  		b, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)
   	 logerror(ef)
 
   		// Packet received, send back response to same client
