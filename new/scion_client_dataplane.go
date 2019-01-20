@@ -82,22 +82,22 @@ func main() {
 
 num_tries= num_tries+1
 id := rand.New(seed).Uint64() //generating random value
-n := binary.PutUvarint(sendPacketBuffer, id)  //encoding to compute id
+n := binary.PutUvarint(sendPacketBuffer, id)  //encoding  id to buffer
 sendPacketBuffer[n] = 0
 
  time_sent := time.Now()
 
- _, ef = scionconnection.Write(sendPacketBuffer)
+ _, ef = scionconnection.Write(sendPacketBuffer) //sending response to server
  logerror(ef)
 
- _, _, ef = scionconnection.ReadFrom(receivePacketBuffer)
+ _, _, ef = scionconnection.ReadFrom(receivePacketBuffer) //reading response from server
  time_received := time.Now()
     logerror(ef)
 
-    ret_id, n := binary.Uvarint(receivePacketBuffer)  //decoding the id anc verifying if the packet was returned via same id
+    ret_id, n := binary.Uvarint(receivePacketBuffer)  //decoding the id from buffer  and verifying if the packet was returned via same id
       if ret_id == id {
 
-        diff := (time_received.UnixNano() - time_sent.UnixNano())
+        diff := (time_received.UnixNano() - time_sent.UnixNano()) //change in time as per dataplane method
         total_number += diff
         iters += 1
 
