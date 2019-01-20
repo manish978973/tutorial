@@ -24,11 +24,11 @@ func printUsage() {
 }
 
 
-func logerror(ef error)    //func which will be caused frequently to log out errors
-{
-if err!=nil
-{
-log.Println(err);
+func logerror(ef error){    //func which will be caused frequently to log out errors
+
+if ef!=nil{
+
+log.Println(ef)
 }
 }
 
@@ -41,12 +41,14 @@ const (
 
 func main() {
 
-  var clientAddress string
-  var serverAddress String
-  var ef error
-  var client_local *snet.Addr
-  var server_destination *snet.Addr
-  var scionconnection *snet.Conn
+  var (
+	clientAddress string
+    serverAddress String
+     ef error
+    client_local *snet.Addr
+   server_destination *snet.Addr
+   scionconnection *snet.Conn
+  )
 
   flag.StringVar(&clientAddress, "c", "", "Client SCION AS address")
   flag.StringVar(&serverAddress, "s", "", "Server SCION AS Address")
