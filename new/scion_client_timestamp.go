@@ -83,14 +83,14 @@ seed := rand.NewSource(time.Now().UnixNano())
 
  num_tries= num_tries+1
  id := rand.New(seed).Uint64() //generating random value
- n := binary.PutUvarint(sendPacketBuffer, id)  //encoding to compute id
+ n := binary.PutUvarint(sendPacketBuffer, id)  //encoding id to buffer
  sendPacketBuffer[n] = 0
 
  time_sent := time.Now()
-		_, ef = scionconnection.Write(sendPacketBuffer)
+		_, ef = scionconnection.Write(sendPacketBuffer) //send response to serber
 		logerror(ef)
 
-    _, _, ef = scionconnection.ReadFrom(receivePacketBuffer)
+    _, _, ef = scionconnection.ReadFrom(receivePacketBuffer)  //reading response from server
     		logerror(ef)
 
         ret_id, n := binary.Uvarint(receivePacketBuffer)  //decoding the id anc verifying if the packet was returned via same id
