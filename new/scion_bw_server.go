@@ -24,10 +24,6 @@ if ef!=nil{
 }
 }
 
-func printUsage() {
-	fmt.Println("\ntimestamp_server -s ServerSCIONAddress")
-}
-
 
 func main(){
 
