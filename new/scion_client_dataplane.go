@@ -19,10 +19,6 @@ import (
 
 
 
-func printuse() {
-	fmt.Println("\ntimestamp_client -c SourceSCIONAddress -s DestinationSCIONAddress")
-}
-
 
 func logerror(ef error){    //func which will be caused frequently to log out errors
 
@@ -32,11 +28,6 @@ log.Println(ef)
 }
 }
 
-
-const (
-	TOTAL_NUM_ITERS = 30   //number of iterations
-	TOTAL_MAX_NUM_TRIES = 50  //max limit of iterations
-)
 
 
 func main() {
@@ -74,13 +65,9 @@ func main() {
 
   	var total_number int64 = 0
 
-  //  iters := 0  // number of iterations
-   // num_tries := 0 //no of attempts
 
 
-  //  for iters < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
 
-//num_tries= num_tries+1
 id := rand.New(seed).Uint64() //generating random value
 n := binary.PutUvarint(sendPacketBuffer, id)  //encoding  id to buffer
 sendPacketBuffer[n] = 0
@@ -99,14 +86,11 @@ sendPacketBuffer[n] = 0
 
         diff := (time_received.UnixNano() - time_sent.UnixNano()) //change in time as per dataplane method
         total_number = diff
-      //  iters += 1
+    
 
            }
-  //  }
+  
 
-  //  if iters != TOTAL_NUM_ITERS {
-   // logerror(fmt.Errorf("Error, exceeded attempts max"))
-    //}
 
     var difference float64 = float64(total_number) // / float64(iters)  //Taking average of latencies for precision
 
