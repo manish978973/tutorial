@@ -16,10 +16,6 @@ import (
 
 
 
-func printUsage() {
-	fmt.Println("\ntimestamp_client -c SourceSCIONAddress -s DestinationSCIONAddress")
-}
-
 
 
 func logerror(ef error) {   //func which will be caused frequently to log out errors
