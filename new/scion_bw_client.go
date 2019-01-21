@@ -1,3 +1,5 @@
+//Reference : https://github.com/netsec-ethz/scion-homeworks/blob/master/bottleneck_bw_est/v1_bw_est_client.go
+
 package main
 
 import (
@@ -11,8 +13,6 @@ import (
 
 	"github.com/scionproto/scion/go/lib/sciond"
 	"github.com/scionproto/scion/go/lib/snet"
-//	"github.com/scionproto/scion/go/lib/spath"
-//	"github.com/scionproto/scion/go/lib/spath/spathmeta"
 )
 
 const (
@@ -31,9 +31,6 @@ log.Println(ef)
 }
 
 
-func printUsage() {
-	fmt.Println("\nbw_est_client -s SourceSCIONAddress -d DestinationSCIONAddress")
-}
 
 
 func main() {
