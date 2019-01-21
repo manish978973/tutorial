@@ -11,15 +11,15 @@ import (
 	"fmt"  //import fmt for printing
 	"log"  //importing log for logging out errors
 	"math/rand" //importing for computing mathematical computations
-	"time"
-  "encoding/binary"
+	"time" // used to estimate time
+  "encoding/binary"  
 	"github.com/scionproto/scion/go/lib/snet" //importing snet packages
 	"github.com/scionproto/scion/go/lib/sciond" //importing sciond packages
 )
 
 
 
-func printUsage() {
+func printuse() {
 	fmt.Println("\ntimestamp_client -c SourceSCIONAddress -s DestinationSCIONAddress")
 }
 
@@ -74,13 +74,13 @@ func main() {
 
   	var total_number int64 = 0
 
-    iters := 0  // number of iterations
-    num_tries := 0 //no of attempts
+  //  iters := 0  // number of iterations
+   // num_tries := 0 //no of attempts
 
 
-    for iters < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
+  //  for iters < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
 
-num_tries= num_tries+1
+//num_tries= num_tries+1
 id := rand.New(seed).Uint64() //generating random value
 n := binary.PutUvarint(sendPacketBuffer, id)  //encoding  id to buffer
 sendPacketBuffer[n] = 0
@@ -98,23 +98,23 @@ sendPacketBuffer[n] = 0
       if ret_id == id {
 
         diff := (time_received.UnixNano() - time_sent.UnixNano()) //change in time as per dataplane method
-        total_number += diff
-        iters += 1
+        total_number = diff
+      //  iters += 1
 
            }
-    }
+  //  }
 
-    if iters != TOTAL_NUM_ITERS {
-    logerror(fmt.Errorf("Error, exceeded attempts max"))
-    }
+  //  if iters != TOTAL_NUM_ITERS {
+   // logerror(fmt.Errorf("Error, exceeded attempts max"))
+    //}
 
-    var difference float64 = float64(total_number) / float64(iters)  //Taking average of latencies for precision
+    var difference float64 = float64(total_number) // / float64(iters)  //Taking average of latencies for precision
 
     fmt.Printf("\nClient: %s\nServer: %s\n", clientAddress, serverAddress);
     fmt.Println("LATENCY_DATAPLANE_METHOD:")
     // Print in ms, so divide by 1e6 from nano
-    fmt.Printf("\tRTT - %.3fms\n", difference/1e9)
-    fmt.Printf("\tLatency - %.3fms\n", difference/2e9)
+    fmt.Printf("\tRTT - %.3fns\n", difference)
+    fmt.Printf("\tLatency - %.3fns\n", difference/2)
 
 
 
