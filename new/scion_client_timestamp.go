@@ -71,8 +71,8 @@ sendPacketBuffer := make([]byte, 16)   //Intiating a dynamic array of respective
 seed := rand.NewSource(time.Now().UnixNano())
 
 	var total_number int64 = 0
-  iterations := 0  // number of iterations
-	num_tries := 0 //no of attempts
+ // iterations := 0  // number of iterations
+//	num_tries := 0 //no of attempts
 
 
 //  for iterations < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
