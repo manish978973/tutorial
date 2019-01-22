@@ -75,9 +75,9 @@ seed := rand.NewSource(time.Now().UnixNano())
 	num_tries := 0 //no of attempts
 
 
-  for iterations < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
+//  for iterations < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
 
- num_tries= num_tries+1
+ //num_tries= num_tries+1
  id := rand.New(seed).Uint64() //generating random value
  n := binary.PutUvarint(sendPacketBuffer, id)  //encoding id to buffer
  sendPacketBuffer[n] = 0
@@ -93,16 +93,17 @@ seed := rand.NewSource(time.Now().UnixNano())
        		if ret_id == id {
        			time_received, _ := binary.Varint(receivePacketBuffer[n:]) //estimating the time received so as to compute Latency
        			diff := (time_received - time_sent.UnixNano())
-       			total_number += diff
-       			iterations += 1
+			total_number = diff
+       	//		total_number += diff
+       	//		iterations += 1
        		}
-       	}
+   //    	}
 
-       	if iterations != TOTAL_NUM_ITERS {
-       	logerror(fmt.Errorf("Error, exceeded attempts max"))
-       	}
+     //  	if iterations != TOTAL_NUM_ITERS {
+       //	logerror(fmt.Errorf("Error, exceeded attempts max"))
+       	//}
 
-       	var difference float64 = float64(total_number) / float64(iterations)  //Taking average of latencies for precision
+       	var difference float64 = float64(total_number) /// float64(iterations)  //Taking average of latencies for precision
 
        	fmt.Printf("\nClient: %s\nServer: %s\n", clientAddress, serverAddress);
        	fmt.Println("LATENCY_TIMESTAMP_METHOD:")
