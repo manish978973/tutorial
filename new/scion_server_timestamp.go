@@ -66,7 +66,7 @@ receivePacketBuffer := make([]byte, 2500)  //Intiating a dynamic array of respec
 
   		// Packet received, send back response to same client
   		a := binary.PutVarint(receivePacketBuffer[b:], time.Now().UnixNano())  //encoding value to buffer
-  		_, ef = scionconnection.WriteTo(receivePacketBuffer[:b+a], clientAddr)  //sending back the response to client
+  		_, ef = scionconnection.WriteTo(receivePacketBuffer[: b+a], clientAddr)  //sending back the response to client
   		 logerror(ef)
   		fmt.Println("Scion connection from", clientAddr)
   	}
