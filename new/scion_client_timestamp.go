@@ -26,10 +26,10 @@ log.Println(ef)
 }
 }
 
-const (
-	TOTAL_NUM_ITERS = 30   //number of iterations
-	TOTAL_MAX_NUM_TRIES = 50  //max limit of iterations
-)
+//const (
+//	TOTAL_NUM_ITERS = 30   //number of iterations
+//	TOTAL_MAX_NUM_TRIES = 50  //max limit of iterations
+//)
 
 
 func main() {
