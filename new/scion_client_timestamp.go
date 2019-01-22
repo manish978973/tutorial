@@ -26,10 +26,7 @@ log.Println(ef)
 }
 }
 
-//const (
-//	TOTAL_NUM_ITERS = 30   //number of iterations
-//	TOTAL_MAX_NUM_TRIES = 50  //max limit of iterations
-//)
+
 
 
 func main() {
@@ -71,13 +68,12 @@ sendPacketBuffer := make([]byte, 16)   //Intiating a dynamic array of respective
 seed := rand.NewSource(time.Now().UnixNano())
 
 	var total_number int64 = 0
- // iterations := 0  // number of iterations
-//	num_tries := 0 //no of attempts
 
 
-//  for iterations < TOTAL_NUM_ITERS && num_tries < TOTAL_MAX_NUM_TRIES{
 
- //num_tries= num_tries+1
+
+
+
  id := rand.New(seed).Uint64() //generating random value
  n := binary.PutUvarint(sendPacketBuffer, id)  //encoding id to buffer
  sendPacketBuffer[n] = 0
@@ -94,16 +90,14 @@ seed := rand.NewSource(time.Now().UnixNano())
        			time_received, _ := binary.Varint(receivePacketBuffer[n:]) //estimating the time received so as to compute Latency
        			diff := (time_received - time_sent.UnixNano())
 			total_number = diff
-       	//		total_number += diff
-       	//		iterations += 1
+       	
+       			
        		}
-   //    	}
+ 
 
-     //  	if iterations != TOTAL_NUM_ITERS {
-       //	logerror(fmt.Errorf("Error, exceeded attempts max"))
-       	//}
+    
 
-       	var difference float64 = float64(total_number) /// float64(iterations)  //Taking average of latencies for precision
+       	var difference float64 = float64(total_number)  
 
        	fmt.Printf("\nClient: %s\nServer: %s\n", clientAddress, serverAddress);
        	fmt.Println("LATENCY_TIMESTAMP_METHOD:")
