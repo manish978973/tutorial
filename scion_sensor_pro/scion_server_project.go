@@ -69,7 +69,7 @@ import (
     //   a := binary.PutVarint(receivePacketBuffer[b:], sensoraverage)// sensor average is the average of weight values
     copy(sendPacketBuffer, sensorValues)
   //  		_, ef = scionconnection.WriteTo(receivePacketBuffer[: b+a], clientAddr)  //sending back the response to client
-        _, ef = scionconnection.WriteTo(sendPacketBuffer[:(sensorValues)], clientAddress)
+        _, ef = scionconnection.WriteTo(sendPacketBuffer[:(sensorValues)], clientAddr)
     		 logerror(ef)
     //		fmt.Println("Scion connection from", clientAddr)
     	}
