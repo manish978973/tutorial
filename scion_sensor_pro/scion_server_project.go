@@ -29,7 +29,7 @@ import (
   saddr string   //Intialising local variables
   ef error
   ser *snet.Addr
-  scionconnection *snet.Conn
+  scionconnection snet.Conn
 
 
  )
