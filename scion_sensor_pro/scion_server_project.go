@@ -1,12 +1,13 @@
 
+
 package  main
 
 import (
- "fmt"             //import fmt for printing
+ //"fmt"             //import fmt for printing
  "log"
  "flag"
- "encoding/binary"
- "time"         //importing log for logging out errors
+ //"encoding/binary"
+ //"time"         //importing log for logging out errors
  "github.com/scionproto/scion/go/lib/snet" //importing snet packages
  "github.com/scionproto/scion/go/lib/sciond"//importing packages
  )
@@ -61,7 +62,7 @@ import (
     		b, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)  //decoding value to buffer
     	 logerror(ef)
 
-       var sensorValues string = "0.89"
+       var sensorValues int = 0.89
 
     		// Packet received, send back response to same client
     	//	a := binary.PutVarint(receivePacketBuffer[b:], time.Now().UnixNano())  //encoding value to buffer
