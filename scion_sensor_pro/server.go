@@ -57,17 +57,18 @@ import (
   sendPacketBuffer := make([]byte, 2500)   //Intiating a dynamic array of respective size
 
     for {
-    		_, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)  //decoding value to buffer
+    		b, clientAddr, ef := scionconnection.ReadFrom(receivePacketBuffer)  //decoding value to buffer
     	 logerror(ef)
 
-       var sensorValues string = "patti"
+       var sensorValues string = "0.89"
+    //  var sensoraverage binary = 1
 
     		// Packet received, send back response to same client
     	//	a := binary.PutVarint(receivePacketBuffer[b:], time.Now().UnixNano())  //encoding value to buffer
-    //   a := binary.PutVarint(receivePacketBuffer[b:], sensoraverage)// sensor average is the average of weight values
-    copy(sendPacketBuffer, sensorValues)
-  //  		_, ef = scionconnection.WriteTo(receivePacketBuffer[: b+a], clientAddr)  //sending back the response to client
-        _, ef = scionconnection.WriteTo(sendPacketBuffer[:len(sensorValues)], clientAddr)
+       //a := binary.PutVarint(receivePacketBuffer[b:], sensoraverage)// sensor average is the average of weight values
+   copy(sendPacketBuffer, sensorValues)
+   		_, ef = scionconnection.WriteTo(sendPacketBuffer[: b], clientAddr)  //sending back the response to client
+      //  _, ef = scionconnection.WriteTo(sendPacketBuffer[: sensorValues], clientAddr)
     		 logerror(ef)
     //		fmt.Println("Scion connection from", clientAddr)
     	}
